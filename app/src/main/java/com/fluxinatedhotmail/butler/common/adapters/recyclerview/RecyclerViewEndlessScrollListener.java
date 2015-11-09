@@ -1,4 +1,4 @@
-package com.fluxinatedhotmail.butler.common.adapters;
+package com.fluxinatedhotmail.butler.common.adapters.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;

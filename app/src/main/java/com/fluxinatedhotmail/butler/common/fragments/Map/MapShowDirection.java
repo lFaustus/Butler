@@ -28,7 +28,7 @@ import com.fluxinatedhotmail.butler.common.fragments.BaseFragment;
 import com.fluxinatedhotmail.butler.common.models.GoogleDirections;
 import com.fluxinatedhotmail.butler.common.utils.maputils.LocationProvider;
 import com.fluxinatedhotmail.butler.common.utils.maputils.LocationProvider.LocationCallback;
-import com.fluxinatedhotmail.butler.enums.TAGS;
+import com.fluxinatedhotmail.butler.enums.Tags;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -158,7 +158,7 @@ public class MapShowDirection extends BaseFragment implements LocationCallback
         }
         else if(item.getItemId() == android.R.id.home)
         {
-          getActivity().onBackPressed();
+            ((MapActivity)getActivity()).onBackPressed();
         }
         return true;
     }
@@ -169,7 +169,7 @@ public class MapShowDirection extends BaseFragment implements LocationCallback
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         menu.clear();
-        inflater.inflate(R.menu.main, menu);
+        inflater.inflate(R.menu.animating_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -209,11 +209,11 @@ public class MapShowDirection extends BaseFragment implements LocationCallback
         {
             Bundle mCoordinates = getArguments();
 
-            LatLng origin = new LatLng(mCoordinates.getDouble(TAGS.ORIGIN.name() + getResources().getString(R.string.latitude), mCurrentLocation.getLatitude())
-                    , mCoordinates.getDouble(TAGS.ORIGIN.name() + getResources().getString(R.string.longitude), mCurrentLocation.getLongitude()));
+            LatLng origin = new LatLng(mCoordinates.getDouble(Tags.MapTags.ORIGIN.name() + getResources().getString(R.string.latitude), mCurrentLocation.getLatitude())
+                    , mCoordinates.getDouble(Tags.MapTags.ORIGIN.name() + getResources().getString(R.string.longitude), mCurrentLocation.getLongitude()));
 
-            LatLng destination = new LatLng(mCoordinates.getDouble(TAGS.DESTINATION.name() + getResources().getString(R.string.latitude), mCurrentLocation.getLatitude())
-                    , mCoordinates.getDouble(TAGS.DESTINATION.name() + getResources().getString(R.string.longitude), mCurrentLocation.getLongitude()));
+            LatLng destination = new LatLng(mCoordinates.getDouble(Tags.MapTags.DESTINATION.name() + getResources().getString(R.string.latitude), mCurrentLocation.getLatitude())
+                    , mCoordinates.getDouble(Tags.MapTags.DESTINATION.name() + getResources().getString(R.string.longitude), mCurrentLocation.getLongitude()));
             setPlacesDirections(origin, destination);
             currentPos = origin;
             isFirstTime = false;
@@ -227,11 +227,6 @@ public class MapShowDirection extends BaseFragment implements LocationCallback
                 liveTrackingMarker.setPosition(currentPos);
         }
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentPos, 15));
-        /*Intent mCoordinates = getIntent();
-        Bundle mOriginBundle = mCoordinates.getExtras().getBundle(TAGS.ORIGIN.name());
-        Bundle mDestinationBundle = mCoordinates.getExtras().getBundle(TAGS.DESTINATION.name());
-        setPlacesDirections(new LatLng(mOriginBundle.getDouble("Lat",location.getLatitude()),mOriginBundle.getDouble("Lng",location.getLongitude())),new LatLng(mDestinationBundle.getDouble("Lat", location.getLatitude()), mDestinationBundle.getDouble("Lng", location.getLongitude())));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mOriginBundle.getDouble("Lat", location.getLatitude()), mOriginBundle.getDouble("Lng", location.getLongitude())), 15));*/
     }
 
 

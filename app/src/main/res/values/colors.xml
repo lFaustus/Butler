@@ -15,7 +15,10 @@
     <color name="myWindowBackground">#FFF</color>
     <color name="myTextPrimaryColor">#212121</color>
     <color name="myNavigationColor">#000</color>
-
+    <color name="material_gray">#CCCCCC</color>
+    <color name="dirtywhite">#F9F9F9</color>
+    <color name="lightblue">#1FA7CB</color>
+    <color name="lightblue_pressed">#39ACCC</color>
     <drawable name="pressed_gray">#0c000000</drawable>
     <drawable name="selected_gray">#2c000000</drawable>
 </resources>

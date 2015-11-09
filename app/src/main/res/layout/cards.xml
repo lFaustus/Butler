@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/card_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    card_view:cardBackgroundColor="@color/cardview_light_background"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardElevation="3dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageVehicle"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/wallpaper"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageVehicle"
+            android:orientation="vertical"
+            >
+
+
+            <com.fluxinatedhotmail.butler.common.customviews.PlayFontTextView
+                android:id="@+id/card_vehicle_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/margin_medium"
+                android:text="Vehicle"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="15sp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/material_gray"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dirtywhite"
+                android:gravity="center">
+
+                <com.fluxinatedhotmail.butler.common.customviews.PlayFontTextView
+                    android:id="@+id/card_vehicle_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/margin_medium"
+                    android:text="Extra Info"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="15sp"
+                    />
+            </RelativeLayout>
+
+            <com.fluxinatedhotmail.butler.common.customviews.PlayFontButton
+                android:id="@+id/card_getVehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/view_custom_lower_left_right_curve"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/cardview_light_background"
+                android:text="GET"/>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <!--FrameLayout
+        android:layout_width="125dp"
+        android:layout_height="80dp"
+        android:layout_gravity="top|start"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginStart="-30dp"
+        android:layout_marginTop="-10dp"
+        android:rotation="-45">
+
+        <com.fluxinated.mixins.customviews.PlayFontTextView
+            android:id="@+id/edit_mode_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/red_material_semi_transparent"
+            android:gravity="center"
+            android:text="Hot"
+            android:textColor="@color/white"
+
+            android:textSize="13sp"/>
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/tile_label"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="#673AB7"
+        >
+
+        <TextView
+            android:id="@+id/textLiquor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+
+        <com.software.shell.fab.ActionButton
+            android:id="@+id/fab_button"
+            style="@style/fab_action_button_style"
+            fab:size="40dp"
+            fab:button_color="#9c27b0"
+            fab:shadow_radius="3dp"
+            fab:shadow_xOffset="2dp"
+            fab:shadow_yOffset="2.5dp"
+
+            /-->
+
+
+    <!--FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true">
+
+    <ImageButton
+        android:id="@+id/fab_button"
+        android:layout_width="@dimen/fab_button_diameter"
+        android:layout_height="@dimen/fab_button_diameter"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/circular_button"
+        android:tint="@android:color/white"
+        />
+    </FrameLayout>
+
+</FrameLayout-->
+</android.support.v7.widget.CardView>

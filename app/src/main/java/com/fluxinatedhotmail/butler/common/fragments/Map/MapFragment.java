@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,14 +14,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.fluxinatedhotmail.butler.FragmentActivityChangeCallbacks;
 import com.fluxinatedhotmail.butler.R;
 import com.fluxinatedhotmail.butler.common.activities.MapActivity;
 import com.fluxinatedhotmail.butler.common.adapters.PlaceAutocompleteAdapter;
 import com.fluxinatedhotmail.butler.common.fragments.BaseFragment;
-import com.fluxinatedhotmail.butler.common.fragments.FragmentChangeCallbacks;
 import com.fluxinatedhotmail.butler.common.logger.Log;
-import com.fluxinatedhotmail.butler.enums.FragmentTags;
-import com.fluxinatedhotmail.butler.enums.TAGS;
+import com.fluxinatedhotmail.butler.enums.Tags;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -49,7 +49,7 @@ public class MapFragment extends BaseFragment implements GoogleApiClient.OnConne
             new LatLng(-34.041458, 150.790100), new LatLng(-33.682247, 151.383362));
 
     private Bundle mCoordinatesBundle;
-    private FragmentChangeCallbacks mFragmentChange;
+    private FragmentActivityChangeCallbacks mFragmentChange;
 
 
 
@@ -76,14 +76,28 @@ public class MapFragment extends BaseFragment implements GoogleApiClient.OnConne
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+       /* setHasOptionsMenu(true);
+        ((MapActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ((MapActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((MapActivity)getActivity()).getSupportActionBar().setHomeButtonEnabled(true);*/
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         menu.clear();
-        inflater.inflate(R.menu.animating_menu, menu);
+        inflater.inflate(R.menu.main, menu);
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if(item.getItemId() == android.R.id.home)
+        {
+            getActivity().onBackPressed();
+        }
+        return true;
     }
 
     @Nullable
@@ -115,11 +129,11 @@ public class MapFragment extends BaseFragment implements GoogleApiClient.OnConne
                 null);
         mAutocompleteViewOrigin = (AutoCompleteTextView)getView().findViewById(R.id.autocomplete_places_origin);
         mAutocompleteViewOrigin.setAdapter(mAdapter);
-        mAutocompleteViewOrigin.setOnItemClickListener(new myAutoCompleteItemClickListener(TAGS.ORIGIN));
+        mAutocompleteViewOrigin.setOnItemClickListener(new myAutoCompleteItemClickListener(Tags.MapTags.ORIGIN));
 
         mAutocompleteViewDestination = (AutoCompleteTextView)getView().findViewById(R.id.autocomplete_places_destination);
         mAutocompleteViewDestination.setAdapter(mAdapter);
-        mAutocompleteViewDestination.setOnItemClickListener(new myAutoCompleteItemClickListener(TAGS.DESTINATION));
+        mAutocompleteViewDestination.setOnItemClickListener(new myAutoCompleteItemClickListener(Tags.MapTags.DESTINATION));
         ((Button) getView().findViewById(R.id.button_map)).setOnClickListener(this);
     }
 
@@ -175,7 +189,7 @@ public class MapFragment extends BaseFragment implements GoogleApiClient.OnConne
         {
             case R.id.button_map:
 
-                mFragmentChange.OnFragmentChange(FragmentTags.MAP,mCoordinatesBundle);
+                mFragmentChange.OnFragmentActivityChange(Tags.FragmentActivityTags.MAP_FRAGMENT, mCoordinatesBundle);
                 break;
         }
     }
@@ -183,9 +197,9 @@ public class MapFragment extends BaseFragment implements GoogleApiClient.OnConne
     private class myAutoCompleteItemClickListener implements AdapterView.OnItemClickListener
     {
 
-        private TAGS tag;
+        private Tags.MapTags tag;
 
-        public myAutoCompleteItemClickListener(TAGS tag)
+        public myAutoCompleteItemClickListener(Tags.MapTags tag)
         {
             this.tag = tag;
         }

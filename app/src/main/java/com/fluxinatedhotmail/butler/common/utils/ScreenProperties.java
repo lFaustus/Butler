@@ -4,33 +4,35 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by User on 15/10/2015.
  */
 public class ScreenProperties
 {
-    DisplayMetrics metrics;
-    Activity activity;
+    static DisplayMetrics metrics;
+    static WeakReference<Activity> activity;
 
     public ScreenProperties(Activity activity)
     {
-        this.activity = activity;
-        metrics = activity.getResources().getDisplayMetrics();
+        this.activity = new WeakReference<Activity>(activity);
+        metrics = this.activity.get().getResources().getDisplayMetrics();
     }
 
-    public int getActualScreenWidth()
+    public static int getActualScreenWidth()
     {
         return metrics.widthPixels;
     }
 
-    public int getActualScreenHeight()
+    public static int getActualScreenHeight()
     {
         return metrics.heightPixels;
     }
 
-    public ScreenOrientation getScreenOrientation()
+    public static ScreenOrientation getScreenOrientation()
     {
-        switch (this.activity.getResources().getConfiguration().orientation)
+        switch (activity.get().getResources().getConfiguration().orientation)
         {
             case Configuration.ORIENTATION_LANDSCAPE:
                 return ScreenOrientation.LANDSCAPE;
@@ -40,7 +42,7 @@ public class ScreenProperties
     }
 
 
-    public DensityType getDensityType()
+    public static DensityType getDensityType()
     {
         switch(metrics.densityDpi)
         {
@@ -59,7 +61,7 @@ public class ScreenProperties
         }
     }
 
-    public ScreenSize getScreenSize()
+    public static ScreenSize getScreenSize()
     {
         /* This is just a note to self since I seldom forget things
          *  AND-ING TRUTH TABLE
@@ -74,7 +76,7 @@ public class ScreenProperties
          *                                    1111 - //Configuration.SCREENLAYOUT_SIZE_MASK value (0x0F which is 15 in decimal)
          *                                    0011 - output is 3 which is equivalent to Configuration.SCREENLAYOUT_SIZE_LARGE
          */
-        int screensize = this.activity.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
+        int screensize = activity.get().getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
         switch(screensize)
         {
             case Configuration.SCREENLAYOUT_SIZE_SMALL:

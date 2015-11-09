@@ -5,18 +5,19 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.fluxinatedhotmail.butler.common.activities.BaseActivity;
 import com.fluxinatedhotmail.butler.common.activities.MapActivity;
+import com.fluxinatedhotmail.butler.common.fragments.Transportation.TransportationService;
 import com.fluxinatedhotmail.butler.navigation.NavigationDrawerCallbacks;
 import com.fluxinatedhotmail.butler.navigation.NavigationDrawerFragment;
 
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends BaseActivity
         implements NavigationDrawerCallbacks
 {
 
@@ -25,7 +26,8 @@ public class MainActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Toolbar mToolbar;
-    private String mTitle;
+    private String mTitle = "Item 1";
+    private Bundle mSavedInstanceState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,6 +44,12 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
         // populate the navigation drawer
         mNavigationDrawerFragment.setUserData("Jomar Pascasio", "jomar.pascasio@yahoo.com", BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
+
+        mSavedInstanceState = savedInstanceState;
+        if(savedInstanceState == null)
+            getSupportFragmentManager().beginTransaction()
+                                        .add(R.id.container, TransportationService.newInstance(null))
+                                        .commit();
     }
 
     @Override
@@ -53,6 +61,8 @@ public class MainActivity extends ActionBarActivity
         {
             case 0:
                 mTitle = "Item 1";
+
+                FragmentTransaction(R.id.container,TransportationService.newInstance(null));
                 break;
             case 1:
                 mTitle = "Item 2";

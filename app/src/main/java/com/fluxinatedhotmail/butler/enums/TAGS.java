@@ -1,21 +1,49 @@
 package com.fluxinatedhotmail.butler.enums;
 
 /**
- * Created by Fluxi on 11/6/2015.
+ * Created by Fluxi on 11/9/2015.
  */
-public enum TAGS
+public class Tags
 {
-    ORIGIN("ORIGIN"),
-    DESTINATION("DESTINATION");
-    private String TAG;
-    TAGS(String mtag)
+
+    /**
+     * Created by Fluxi on 11/6/2015.
+     */
+    public enum MapTags
     {
-        TAG = mtag;
+        ORIGIN("ORIGIN"),
+        DESTINATION("DESTINATION");
+        private String TAG;
+        MapTags(String mtag)
+        {
+            TAG = mtag;
+        }
+
+        public String getTag()
+        {
+            return TAG;
+        }
+
+
     }
 
-    public String getTag()
-    {
-        return TAG;
+    public enum FragmentActivityTags {
+
+        MAP_FRAGMENT("MapFragment"),
+        HOME_FRAGMENT("HomeFragment"),
+        NEWS_FRAGMENT("NewsFragment"),
+
+        MAP_ACTIVITY("MapActivity");
+        private String TAG;
+
+        FragmentActivityTags(String t)
+        {
+            TAG = t;
+        }
+        public String getTAG()
+        {
+            return TAG;
+        }
     }
 
 

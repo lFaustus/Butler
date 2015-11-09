@@ -5,13 +5,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.fluxinatedhotmail.butler.FragmentActivityChangeCallbacks;
 import com.fluxinatedhotmail.butler.R;
-import com.fluxinatedhotmail.butler.common.fragments.FragmentChangeCallbacks;
 import com.fluxinatedhotmail.butler.common.fragments.Map.MapFragment;
 import com.fluxinatedhotmail.butler.common.fragments.Map.MapShowDirection;
-import com.fluxinatedhotmail.butler.enums.FragmentTags;
+import com.fluxinatedhotmail.butler.enums.Tags;
 
-public class MapActivity extends BaseActivity implements FragmentChangeCallbacks
+public class MapActivity extends BaseActivity implements FragmentActivityChangeCallbacks
 {
     private Toolbar mToolbar;
     @Override
@@ -66,18 +66,18 @@ public class MapActivity extends BaseActivity implements FragmentChangeCallbacks
     }
 
     @Override
-    public void OnFragmentChange(FragmentTags fragment, Object... extra)
+    public void OnFragmentActivityChange(Tags.FragmentActivityTags fragment, Object... extra)
     {
         switch(fragment)
         {
-            case MAP:
+            case MAP_FRAGMENT:
                 FragmentTransaction(R.id.rootview_fragment, MapShowDirection.newInstance((Bundle)extra[0]));
                 break;
 
-            case HOME:
+            case HOME_FRAGMENT:
                 break;
 
-            case NEWS:
+            case NEWS_FRAGMENT:
                 break;
         }
     }

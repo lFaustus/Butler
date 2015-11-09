@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"
+        android:background="#fff">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <!--com.fluxinated.mixins.floatingactionbuttons.floatingactionbutton.FloatingActionsMenu
+        android:tag="floatingactionsmenu"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        fab:fab_expandDirection="down"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="right"
+        android:layout_marginTop="5dp"
+        >
+
+        <com.fluxinated.mixins.floatingactionbuttons.floatingactionbutton.FloatingActionButton
+            android:tag="fab"
+            android:id="@+id/floating_side_button_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="#673AB7"
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_title="Settings"
+            />
+
+        <com.fluxinated.mixins.floatingactionbuttons.floatingactionbutton.FloatingActionButton
+            android:tag="fab"
+            android:id="@+id/floating_side_button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="#0091EA"
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_title="Search Mixture"
+            />
+
+        <com.fluxinated.mixins.floatingactionbuttons.floatingactionbutton.FloatingActionButton
+            android:tag="fab"
+            android:id="@+id/floating_side_button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="#FF5722"
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_title="Create your own mixture"
+            />
+    </com.fluxinated.mixins.floatingactionbuttons.floatingactionbutton.FloatingActionsMenu>
+
+    <include layout="@layout/searchfield"
+             android:id="@+id/search_view"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="top|right"
+             android:layout_marginTop="10dp"
+             android:layout_marginRight="10dp"
+             android:visibility="gone"
+        /-->
+
+</FrameLayout>

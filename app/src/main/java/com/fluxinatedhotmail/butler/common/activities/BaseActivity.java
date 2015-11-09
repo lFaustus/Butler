@@ -14,7 +14,8 @@ import com.fluxinatedhotmail.butler.common.logger.LogWrapper;
 /**
  * Created by Fluxi on 11/6/2015.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity
+{
     public static final String TAG = "BaseActivity";
 
     @Override

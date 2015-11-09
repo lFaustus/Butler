@@ -5,11 +5,9 @@
     tools:context=".MapActivity2">
 
     <item android:id="@+id/action_bar_show_route"
-          app:showAsAction="collapseActionView"
           android:title="@string/load_directions"/>
 
 		<item android:id="@+id/action_bar_start_animation"
-        app:showAsAction="collapseActionView"
         android:title="@string/start_animation"/>
 
 
